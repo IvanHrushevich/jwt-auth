@@ -1,11 +1,11 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
 const router = require("./router/index");
-
-require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT;
