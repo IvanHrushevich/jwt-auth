@@ -5,13 +5,16 @@ const userModel = require("../models/user.model");
 const mailService = require("./mail.service");
 const tokenService = require("./token.service");
 const UserDto = require("../dtos/user-dto");
+const ApiError = require("../exceptions/api-error");
 
 class UserService {
   async registration(email, password) {
     const candidate = await userModel.findOne({ email });
 
     if (candidate) {
-      throw new Error(`Candidate with email ${email} already exists.`);
+      throw ApiError.BadRequest(
+        `Candidate with email ${email} already exists.`
+      );
     }
 
     // user creation
@@ -37,7 +40,7 @@ class UserService {
     const user = await userModel.findOne({ activationLink });
 
     if (!user) {
-      throw new Error("No User with provided activation link.");
+      throw new ApiError.BadRequest("No User with provided activation link.");
     }
 
     user.isActivated = true;
