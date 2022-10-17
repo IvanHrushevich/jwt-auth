@@ -34,6 +34,7 @@ function App() {
     return (
       <div>
         <h2 style={{ textAlign: 'center' }}>User: {store.user?.email}</h2>
+        <h2>{store.user?.isActivated ? 'Account is activated' : 'Please activate your account!'}</h2>
         <button type="button" onClick={() => store.logout()}>
           Log out
         </button>
