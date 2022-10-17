@@ -54,7 +54,6 @@ class UserService {
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
-    console.log("isPasswordCorrect", isPasswordCorrect);
     if (!isPasswordCorrect) {
       throw ApiError.BadRequest("Wrong password");
     }
