@@ -12,6 +12,10 @@ function App() {
     }
   }, []);
 
+  if (store.isLoading) {
+    return <h2>Loading...</h2>;
+  }
+
   if (store.isAuth) {
     return (
       <>
